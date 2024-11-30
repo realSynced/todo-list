@@ -6,6 +6,7 @@ export default function Home() {
   const [taskInput, setTaskInput] = useState('');
   const [firstTime, setFirstTime] = useState(true);
   const [tasks, setTasks] = useState(['Example 1', 'Example 2', 'Example 3']);
+  const [name, setName] = useState('')
 
   const addTask = (e) => {
     e.preventDefault();
@@ -28,11 +29,27 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    
+    if(localStorage.getItem('name') !== null && localStorage.getItem('name') !== '' && localStorage.getItem('name').trim() !== ''){
+      setName(localStorage.getItem('name'));
+      return;
+    } else {
+      let usersName = prompt('Please enter your name');
+      setName(usersName);
+      localStorage.setItem('name', usersName);
+    }
+
+  })
+
 
   return (
     <div className="flex justify-center w-full min-h-screen p-5">
+      <div className="w-max">
+        <h1 className="text-2xl font-bold">Hello, {name}!</h1>
+      </div>
       <main className="flex flex-col w-full items-center">
-        <div className="">
+        <div className="mb-2">
           <h1 className="text-2xl font-bold ">To-Do List</h1>
         </div>
         <div className="w-[30rem] bg-lightgray rounded-3xl h-max p-5">
