@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --lightgray: #F3F4F6;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -18,4 +19,14 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* New hover effect for all elements */
+.hover {
+  transition: transform 0.3s ease; /* Smooth transition for the transform property */
+}
+
+.hover:hover {
+  transform: translateY(-5px); /* Move the element up slightly on hover */
 }
